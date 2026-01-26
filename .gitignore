@@ -1,0 +1,25 @@
+# Xcode build products and local state
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+# XcodeGen does not generate this from project.yml
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# macOS
+.DS_Store
+._*
+
+# Tooling
+__pycache__/
+*.pyc
+.config

@@ -1,0 +1,363 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		094C77C532BB12DB9F2D2288 /* LHCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5476618F18A60EBA843F8959 /* LHCViewController.m */; };
+		116FA2EA8A4E7993EC0ADD6F /* LHCSceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 397B793C7C3AD63EEACE84FC /* LHCSceneView.m */; };
+		519EAB567C3C79629138DE12 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3E00A5C013BF0E220F97B2B4 /* AppIcon.icns */; };
+		71670E714E051ABD5ACE63B9 /* LHCPartInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EE507499D72334AFCD790F00 /* LHCPartInfo.m */; };
+		719643A659D40B713F3F04E3 /* LHCHadronModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2578ECE0CD12BAC22719CB /* LHCHadronModel.m */; };
+		7251D05B1F41C46EAB38D514 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC4D0C12523413C2BCA7FE /* main.m */; };
+		98C913D3C1D05A2C3E81E9F3 /* LHCParticleSystemFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDEFF0927C7BE2CE54ECDC0 /* LHCParticleSystemFactory.m */; };
+		B5E62357EA78F1662D271341 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B652FEF99ED1AC71E55EE8DB /* AppDelegate.m */; };
+		C6CCE88D2CB0A817975FDCD6 /* LHCSimulationConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 8363891DFD928C9F31501C8D /* LHCSimulationConfig.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D59B516A1D9A8E0DA9DAB18 /* LHCHadronModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCHadronModel.h; sourceTree = "<group>"; };
+		397B793C7C3AD63EEACE84FC /* LHCSceneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHCSceneView.m; sourceTree = "<group>"; };
+		3BDFFC9759DB63E3D2C1ACA5 /* LHCPartInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCPartInfo.h; sourceTree = "<group>"; };
+		3E00A5C013BF0E220F97B2B4 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		4159E01151E35CA2C1C7CCD9 /* LHCSimulationConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCSimulationConfig.h; sourceTree = "<group>"; };
+		4CDE8ED49AD5888D061E27FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5476618F18A60EBA843F8959 /* LHCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHCViewController.m; sourceTree = "<group>"; };
+		55EC4D0C12523413C2BCA7FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		65D9BAB35E3EE0570E1703D7 /* LHCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCViewController.h; sourceTree = "<group>"; };
+		8363891DFD928C9F31501C8D /* LHCSimulationConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHCSimulationConfig.m; sourceTree = "<group>"; };
+		8CDEFF0927C7BE2CE54ECDC0 /* LHCParticleSystemFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHCParticleSystemFactory.m; sourceTree = "<group>"; };
+		AF32684BD1B2E3FBFB9BF6C4 /* LHC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LHC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1A76F8FE2DF9C730A833B46 /* LHCSceneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCSceneView.h; sourceTree = "<group>"; };
+		B652FEF99ED1AC71E55EE8DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B97047784B1A61DEC35998DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE2578ECE0CD12BAC22719CB /* LHCHadronModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHCHadronModel.m; sourceTree = "<group>"; };
+		DA8A876B70C10F0449339200 /* LHCParticleSystemFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCParticleSystemFactory.h; sourceTree = "<group>"; };
+		EE507499D72334AFCD790F00 /* LHCPartInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHCPartInfo.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		40345E43D889BF45CBE1C74E = {
+			isa = PBXGroup;
+			children = (
+				77C0FB2AC58F01AFB63553B8 /* LHC */,
+				BA7ACDFB962D6085ECE9E3BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		77C0FB2AC58F01AFB63553B8 /* LHC */ = {
+			isa = PBXGroup;
+			children = (
+				D7FEF065DF1F3B0574958D29 /* Resources */,
+				4CDE8ED49AD5888D061E27FB /* AppDelegate.h */,
+				B652FEF99ED1AC71E55EE8DB /* AppDelegate.m */,
+				1D59B516A1D9A8E0DA9DAB18 /* LHCHadronModel.h */,
+				CE2578ECE0CD12BAC22719CB /* LHCHadronModel.m */,
+				DA8A876B70C10F0449339200 /* LHCParticleSystemFactory.h */,
+				8CDEFF0927C7BE2CE54ECDC0 /* LHCParticleSystemFactory.m */,
+				3BDFFC9759DB63E3D2C1ACA5 /* LHCPartInfo.h */,
+				EE507499D72334AFCD790F00 /* LHCPartInfo.m */,
+				B1A76F8FE2DF9C730A833B46 /* LHCSceneView.h */,
+				397B793C7C3AD63EEACE84FC /* LHCSceneView.m */,
+				4159E01151E35CA2C1C7CCD9 /* LHCSimulationConfig.h */,
+				8363891DFD928C9F31501C8D /* LHCSimulationConfig.m */,
+				65D9BAB35E3EE0570E1703D7 /* LHCViewController.h */,
+				5476618F18A60EBA843F8959 /* LHCViewController.m */,
+				55EC4D0C12523413C2BCA7FE /* main.m */,
+			);
+			path = LHC;
+			sourceTree = "<group>";
+		};
+		BA7ACDFB962D6085ECE9E3BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF32684BD1B2E3FBFB9BF6C4 /* LHC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7FEF065DF1F3B0574958D29 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E00A5C013BF0E220F97B2B4 /* AppIcon.icns */,
+				B97047784B1A61DEC35998DF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAFF497A2AA7FEE46AD189A5 /* LHC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75491D080EB672BFFAE88198 /* Build configuration list for PBXNativeTarget "LHC" */;
+			buildPhases = (
+				E3EA2F77052D5B178A2F3BEA /* Sources */,
+				DCBD6FD9B6F8E913E4CABE2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LHC;
+			packageProductDependencies = (
+			);
+			productName = LHC;
+			productReference = AF32684BD1B2E3FBFB9BF6C4 /* LHC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FDC807F6F575F1BBF6408DC5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					AAFF497A2AA7FEE46AD189A5 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 2B2A83C23CDC5F407A3AEC96 /* Build configuration list for PBXProject "LHC" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 40345E43D889BF45CBE1C74E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = BA7ACDFB962D6085ECE9E3BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAFF497A2AA7FEE46AD189A5 /* LHC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DCBD6FD9B6F8E913E4CABE2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				519EAB567C3C79629138DE12 /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E3EA2F77052D5B178A2F3BEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5E62357EA78F1662D271341 /* AppDelegate.m in Sources */,
+				719643A659D40B713F3F04E3 /* LHCHadronModel.m in Sources */,
+				71670E714E051ABD5ACE63B9 /* LHCPartInfo.m in Sources */,
+				98C913D3C1D05A2C3E81E9F3 /* LHCParticleSystemFactory.m in Sources */,
+				116FA2EA8A4E7993EC0ADD6F /* LHCSceneView.m in Sources */,
+				C6CCE88D2CB0A817975FDCD6 /* LHCSimulationConfig.m in Sources */,
+				094C77C532BB12DB9F2D2288 /* LHCViewController.m in Sources */,
+				7251D05B1F41C46EAB38D514 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3048A40D14F5DA9009749D36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B5C4EFC47D68E81A39D3390D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BB2CE1BD4FA590421D82DA37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				INFOPLIST_FILE = LHC/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.cern.lhc.interactive;
+				PRODUCT_NAME = LHC;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CB58476C2CB300A0812CA5FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				INFOPLIST_FILE = LHC/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.cern.lhc.interactive;
+				PRODUCT_NAME = LHC;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B2A83C23CDC5F407A3AEC96 /* Build configuration list for PBXProject "LHC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3048A40D14F5DA9009749D36 /* Debug */,
+				B5C4EFC47D68E81A39D3390D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		75491D080EB672BFFAE88198 /* Build configuration list for PBXNativeTarget "LHC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB2CE1BD4FA590421D82DA37 /* Debug */,
+				CB58476C2CB300A0812CA5FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FDC807F6F575F1BBF6408DC5 /* Project object */;
+}

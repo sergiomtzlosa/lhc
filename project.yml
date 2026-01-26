@@ -1,0 +1,51 @@
+name: LHC
+options:
+  bundleIdPrefix: org.cern
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+settings:
+  base:
+    CLANG_ENABLE_OBJC_ARC: YES
+    CLANG_ENABLE_MODULES: YES
+    MACOSX_DEPLOYMENT_TARGET: "13.0"
+targets:
+  LHC:
+    type: application
+    platform: macOS
+    sources:
+      - path: LHC
+        excludes:
+          - Resources/Info.plist
+      - path: LHC/Resources/Info.plist
+        buildPhase: none
+    settings:
+      base:
+        PRODUCT_NAME: LHC
+        PRODUCT_BUNDLE_IDENTIFIER: org.cern.lhc.interactive
+        INFOPLIST_FILE: LHC/Resources/Info.plist
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        DEVELOPMENT_TEAM: ""
+        ENABLE_HARDENED_RUNTIME: NO
+        COMBINE_HIDPI_IMAGES: YES
+        ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: NO
+        GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS: NO
+
+schemes:
+  LHC:
+    build:
+      targets:
+        LHC: all
+    run:
+      config: Debug
+      enableGPUValidationMode: false
+    test:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
