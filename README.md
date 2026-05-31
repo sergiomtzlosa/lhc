@@ -2,7 +2,7 @@
 
 A native macOS application that turns the Large Hadron Collider into an explorable SceneKit model. Built with Objective-C, AppKit and SceneKit, it combines an interactive 27 km accelerator ring with a configurable particle-collision simulator and an educational component inspector.
 
-![LHC Interactive screenshot](docs/preview.png)
+![LHC Interactive screenshot](docs/screenshot.png)
 
 ## Highlights
 
