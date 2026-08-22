@@ -221,7 +221,7 @@ static NSImage *LHCGrassTexture(void) {
 
             // Mowing bands add a little human-maintained scale to the site.
             for (NSInteger i = 0; i < 12; i++) {
-                [[NSColor colorWithCalibratedWhite:1.0 alpha:0.018] setFill];
+                [[NSColor colorWithCalibratedWhite:1.0 alpha:0.007] setFill];
                 NSRectFill(NSMakeRect(0, (CGFloat)i * 1024.0 / 12.0,
                                      1024, 1024.0 / 24.0));
             }
@@ -707,6 +707,194 @@ static SCNNode *LHCRingSector(CGFloat innerRadius, CGFloat outerRadius,
     return node;
 }
 
+#pragma mark - Site infrastructure
+
+static void LHCAddServiceRoad(SCNNode *terrain) {
+    SCNMaterial *asphalt = [SCNMaterial material];
+    asphalt.lightingModelName = SCNLightingModelPhysicallyBased;
+    asphalt.diffuse.contents = LHCAsphaltTexture();
+    asphalt.roughness.contents = @0.93;
+    asphalt.metalness.contents = @0.03;
+    asphalt.normal.contents = LHCBrushedNormalImage();
+    asphalt.normal.intensity = 0.12;
+    asphalt.normal.wrapS = SCNWrapModeRepeat;
+    asphalt.normal.wrapT = SCNWrapModeRepeat;
+    asphalt.normal.maxAnisotropy = 8.0;
+    asphalt.doubleSided = YES;
+
+    SCNGeometry *roadGeometry = LHCAnnulusGeometry(LHCSiteRoadInnerRadius,
+                                                   LHCSiteRoadOuterRadius,
+                                                   0.012,
+                                                   asphalt);
+    SCNNode *road = [SCNNode nodeWithGeometry:roadGeometry];
+    road.position = SCNVector3Make(0, LHCSiteBaseY, 0);
+    road.name = @"part.terrain.road";
+    road.castsShadow = NO;
+    [terrain addChildNode:road];
+
+    SCNMaterial *curb = LHCPBRMaterial(LHCColor(0.43, 0.42, 0.37), 0.88, 0.0);
+    for (NSNumber *radius in @[@(LHCSiteRoadInnerRadius - 0.05),
+                                @(LHCSiteRoadOuterRadius + 0.05)]) {
+        SCNNode *edge = LHCTorus(radius.doubleValue, 0.028, curb,
+                                 SCNVector3Make(0, LHCSiteBaseY + 0.018, 0), NO);
+        edge.castsShadow = NO;
+        [terrain addChildNode:edge];
+    }
+
+    SCNMaterial *marking = LHCPBRMaterial(LHCColor(0.76, 0.70, 0.52), 0.72, 0.0);
+    marking.emission.contents = LHCColor(0.90, 0.75, 0.40);
+    marking.emission.intensity = 0.16;
+    const CGFloat laneRadius = (LHCSiteRoadInnerRadius + LHCSiteRoadOuterRadius) * 0.5;
+    for (NSInteger i = 0; i < 72; i++) {
+        CGFloat angle = (CGFloat)i / 72.0 * M_PI * 2.0;
+        SCNNode *dash = LHCBox(SCNVector3Make(0.055, 0.012, 0.34), 0.002, marking,
+                               SCNVector3Make(cos(angle) * laneRadius,
+                                              LHCSiteBaseY + 0.026,
+                                              sin(angle) * laneRadius));
+        dash.eulerAngles = SCNVector3Make(0, -angle, 0);
+        dash.castsShadow = NO;
+        [terrain addChildNode:dash];
+    }
+}
+
+static void LHCAddServiceBuilding(SCNNode *terrain, CGFloat angle) {
+    const CGFloat radius = 17.7;
+    CGFloat x = cos(angle) * radius;
+    CGFloat z = sin(angle) * radius;
+
+    SCNNode *root = [SCNNode node];
+    root.name = @"part.terrain.building";
+    root.position = SCNVector3Make(x, LHCSiteBaseY + LHCSiteHeight(x, z), z);
+    // Local +Z points toward the accelerator ring, so the entrance and path
+    // face the service road rather than the empty outside of the site.
+    root.eulerAngles = SCNVector3Make(0, -angle - M_PI_2, 0);
+    [terrain addChildNode:root];
+
+    SCNMaterial *concrete = LHCPanelMaterial(LHCColor(0.44, 0.43, 0.39),
+                                              LHCColor(0.16, 0.18, 0.19), 0.91, 0.0);
+    SCNMaterial *roof = [SCNMaterial material];
+    // A dark, unlit roof reads as tar/bitumen and avoids the blue rim light
+    // turning every horizontal service roof into a glowing cyan panel.
+    roof.lightingModelName = SCNLightingModelConstant;
+    roof.diffuse.contents = LHCColor(0.0, 0.0, 0.0);
+    SCNMaterial *darkMetal = LHCPBRMaterial(LHCColor(0.09, 0.11, 0.13), 0.44, 0.62);
+    SCNMaterial *window = LHCEmissiveMaterial(LHCColor(1.0, 0.72, 0.35), 1.15);
+    SCNMaterial *warning = LHCPBRMaterial(LHCColor(0.78, 0.58, 0.12), 0.68, 0.0);
+    SCNMaterial *pathMaterial = LHCPBRMaterial(LHCColor(0.18, 0.19, 0.19), 0.94, 0.02);
+
+    [root addChildNode:LHCBox(SCNVector3Make(2.55, 0.10, 1.65), 0.025, concrete,
+                              SCNVector3Make(0, 0.05, 0))];
+    [root addChildNode:LHCBox(SCNVector3Make(1.95, 0.62, 1.18), 0.030, concrete,
+                              SCNVector3Make(0, 0.40, 0))];
+    [root addChildNode:LHCBox(SCNVector3Make(2.12, 0.07, 1.34), 0.020, roof,
+                              SCNVector3Make(0, 0.735, 0))];
+    [root addChildNode:LHCBox(SCNVector3Make(2.16, 0.025, 1.38), 0.010, darkMetal,
+                              SCNVector3Make(0, 0.775, 0))];
+
+    // Recessed entrance and a warm wall lamp.
+    [root addChildNode:LHCBox(SCNVector3Make(0.34, 0.42, 0.025), 0.006, darkMetal,
+                              SCNVector3Make(0, 0.29, 0.596))];
+    [root addChildNode:LHCBox(SCNVector3Make(0.40, 0.46, 0.018), 0.005, roof,
+                              SCNVector3Make(0, 0.30, 0.584))];
+    [root addChildNode:LHCBox(SCNVector3Make(0.15, 0.035, 0.03), 0.004, window,
+                              SCNVector3Make(0, 0.56, 0.598))];
+
+    for (NSNumber *offset in @[@(-0.62), @(0.62)]) {
+        [root addChildNode:LHCBox(SCNVector3Make(0.38, 0.15, 0.020), 0.004, window,
+                                  SCNVector3Make(offset.doubleValue, 0.47, 0.596))];
+        [root addChildNode:LHCBox(SCNVector3Make(0.32, 0.15, 0.020), 0.004, window,
+                                  SCNVector3Make(offset.doubleValue, 0.47, -0.596))];
+        [root addChildNode:LHCBox(SCNVector3Make(0.020, 0.15, 0.34), 0.004, window,
+                                  SCNVector3Make(0.986, 0.47, offset.doubleValue * 0.5))];
+        [root addChildNode:LHCBox(SCNVector3Make(0.020, 0.15, 0.34), 0.004, window,
+                                  SCNVector3Make(-0.986, 0.47, offset.doubleValue * 0.5))];
+    }
+
+    // A rear service door and lamp keep the building from becoming a dark
+    // silhouette when the camera orbits behind it.
+    [root addChildNode:LHCBox(SCNVector3Make(0.34, 0.42, 0.025), 0.006, darkMetal,
+                              SCNVector3Make(0, 0.29, -0.596))];
+    [root addChildNode:LHCBox(SCNVector3Make(0.15, 0.035, 0.03), 0.004, window,
+                              SCNVector3Make(0, 0.56, -0.598))];
+
+    // Rooftop plant gives the buildings a believable industrial silhouette.
+    [root addChildNode:LHCCylinder(0.10, 0.14, darkMetal,
+                                   SCNVector3Make(-0.55, 0.80, -0.15), NO)];
+    [root addChildNode:LHCCylinder(0.075, 0.22, darkMetal,
+                                   SCNVector3Make(0.47, 0.84, 0.18), NO)];
+    [root addChildNode:LHCBox(SCNVector3Make(0.42, 0.16, 0.32), 0.012, roof,
+                              SCNVector3Make(0.05, 0.82, -0.25))];
+    [root addChildNode:LHCCylinder(0.035, 0.52, darkMetal,
+                                   SCNVector3Make(0.72, 1.01, -0.36), NO)];
+    [root addChildNode:LHCCylinder(0.012, 0.58, darkMetal,
+                                   SCNVector3Make(-0.78, 1.11, -0.42), NO)];
+
+    // Paved approach connects each building to the ring road.
+    [root addChildNode:LHCBox(SCNVector3Make(0.85, 0.025, 2.80), 0.010, pathMaterial,
+                              SCNVector3Make(0, 0.03, 1.85))];
+    [root addChildNode:LHCBox(SCNVector3Make(1.95, 0.025, 0.06), 0.002, warning,
+                              SCNVector3Make(0, 0.105, 0.605))];
+    for (NSNumber *offset in @[@(-0.55), @(0.55)]) {
+        [root addChildNode:LHCCylinder(0.028, 0.18, darkMetal,
+                                       SCNVector3Make(offset.doubleValue, 0.11, 1.02), NO)];
+    }
+}
+
+static void LHCAddSiteTrees(SCNNode *terrain) {
+    SCNMaterial *trunk = LHCPBRMaterial(LHCColor(0.22, 0.15, 0.09), 0.96, 0.0);
+    NSArray<SCNMaterial *> *canopies = @[
+        LHCPBRMaterial(LHCColor(0.12, 0.26, 0.13), 0.94, 0.0),
+        LHCPBRMaterial(LHCColor(0.16, 0.30, 0.15), 0.92, 0.0),
+        LHCPBRMaterial(LHCColor(0.20, 0.34, 0.17), 0.95, 0.0)
+    ];
+
+    for (NSInteger i = 0; i < 64; i++) {
+        CGFloat angle = (CGFloat)i * 2.3999632297 + 0.35;
+        CGFloat radius = 19.5 + (CGFloat)((i * 17) % 23);
+
+        BOOL nearBuilding = NO;
+        for (NSInteger building = 0; building < 4; building++) {
+            CGFloat buildingAngle = (CGFloat)building * M_PI_2;
+            CGFloat delta = fabs(atan2(sin(angle - buildingAngle), cos(angle - buildingAngle)));
+            if (radius < 23.5 && delta < 0.32) {
+                nearBuilding = YES;
+                break;
+            }
+        }
+        if (nearBuilding) {
+            continue;
+        }
+
+        CGFloat x = cos(angle) * radius;
+        CGFloat z = sin(angle) * radius;
+        CGFloat scale = 0.78 + (CGFloat)((i * 11) % 9) / 9.0 * 0.70;
+        SCNNode *tree = [SCNNode node];
+        tree.name = @"part.terrain.tree";
+        tree.position = SCNVector3Make(x, LHCSiteBaseY + LHCSiteHeight(x, z), z);
+        tree.castsShadow = YES;
+
+        [tree addChildNode:LHCCylinder(0.035 * scale, 0.50 * scale, trunk,
+                                       SCNVector3Make(0, 0.25 * scale, 0), NO)];
+
+        SCNMaterial *canopyMaterial = canopies[(NSUInteger)(i % 3)];
+        SCNSphere *crown = [SCNSphere sphereWithRadius:0.23 * scale];
+        crown.segmentCount = 16;
+        SCNNode *crownNode = LHCGeometryNode(crown, canopyMaterial,
+                                             SCNVector3Make(0, 0.59 * scale, 0));
+        crownNode.scale = SCNVector3Make(1.0, 0.86, 1.0);
+        [tree addChildNode:crownNode];
+
+        SCNSphere *upperCrown = [SCNSphere sphereWithRadius:0.16 * scale];
+        upperCrown.segmentCount = 14;
+        SCNNode *upperNode = LHCGeometryNode(upperCrown, canopyMaterial,
+                                             SCNVector3Make(0.07 * scale, 0.73 * scale,
+                                                            0.04 * scale));
+        [tree addChildNode:upperNode];
+
+        [terrain addChildNode:tree];
+    }
+}
+
 #pragma mark - Model
 
 @interface LHCHadronModel ()
@@ -935,6 +1123,35 @@ static SCNNode *LHCRingSector(CGFloat innerRadius, CGFloat outerRadius,
     [terrain addChildNode:soil4];
 
     terrain.scale = SCNVector3Make(1.16, 1.0, 0.93);
+
+    // The accelerator sits on a raised survey plateau; the surrounding site
+    // grounds it with rolling terrain, a service road, plant buildings and a
+    // sparse tree line. Everything is procedural and shares the terrain node's
+    // visibility toggle.
+    SCNMaterial *grassMaterial = [SCNMaterial material];
+    grassMaterial.lightingModelName = SCNLightingModelPhysicallyBased;
+    grassMaterial.diffuse.contents = LHCGrassTexture();
+    grassMaterial.diffuse.wrapS = SCNWrapModeRepeat;
+    grassMaterial.diffuse.wrapT = SCNWrapModeRepeat;
+    grassMaterial.roughness.contents = @0.96;
+    grassMaterial.metalness.contents = @0.0;
+    grassMaterial.normal.contents = LHCBrushedNormalImage();
+    grassMaterial.normal.intensity = 0.10;
+    grassMaterial.normal.wrapS = SCNWrapModeRepeat;
+    grassMaterial.normal.wrapT = SCNWrapModeRepeat;
+    grassMaterial.normal.maxAnisotropy = 8.0;
+
+    SCNNode *siteGround = [SCNNode nodeWithGeometry:LHCSiteGroundGeometry(grassMaterial)];
+    siteGround.name = @"part.terrain.site";
+    siteGround.position = SCNVector3Make(0, LHCSiteBaseY, 0);
+    siteGround.castsShadow = NO;
+    [terrain addChildNode:siteGround];
+
+    LHCAddServiceRoad(terrain);
+    for (NSInteger i = 0; i < 4; i++) {
+        LHCAddServiceBuilding(terrain, (CGFloat)i * M_PI_2);
+    }
+    LHCAddSiteTrees(terrain);
 
     // Faint illuminated survey rings laid into the plateau.
     SCNMaterial *surveyMaterial = LHCEmissiveMaterial(LHCColor(0.30, 0.78, 1.0), 0.45);
